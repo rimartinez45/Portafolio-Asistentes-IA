@@ -617,3 +617,164 @@ footer .marca {
     gap: 20px;
   }
 }
+
+/* ========================================
+   MEJORAS VISUALES - PORTAFOLIO PROFESIONAL
+======================================== */
+
+:root {
+  --azul-oscuro: #101c32;
+  --azul-principal: #1478c9;
+  --azul-claro: #38bdf8;
+  --texto: #17243b;
+  --texto-secundario: #64748b;
+  --fondo: #f5f7fb;
+  --blanco: #ffffff;
+  --radio: 16px;
+  --sombra: 0 12px 35px rgba(16, 28, 50, 0.08);
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+/* Navegación */
+
+.barra {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.boton-nav,
+.boton-principal,
+.boton-tarjeta {
+  transition: transform .25s ease, background .25s ease,
+              box-shadow .25s ease;
+}
+
+.boton-nav:hover,
+.boton-tarjeta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(20, 120, 201, 0.25);
+}
+
+/* Presentación */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+.circulo {
+  box-shadow:
+    0 0 70px rgba(22, 133, 210, 0.18),
+    inset 0 0 30px rgba(255, 255, 255, 0.04);
+}
+
+/* Tarjetas */
+
+.valor,
+.habilidad,
+.proyecto,
+.asistente {
+  box-shadow: 0 5px 20px rgba(20, 36, 61, 0.035);
+}
+
+.valor,
+.habilidad,
+.proyecto,
+.asistente {
+  transition: transform .25s ease, box-shadow .25s ease,
+              border-color .25s ease;
+}
+
+.valor:hover,
+.habilidad:hover,
+.proyecto:hover,
+.asistente:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra);
+}
+
+/* Proyectos */
+
+.proyecto-imagen {
+  position: relative;
+  overflow: hidden;
+}
+
+.imagen-java {
+  background:
+    radial-gradient(circle at 80% 20%, #38bdf8 0, transparent 30%),
+    linear-gradient(135deg, #12304e, #1478c9);
+}
+
+.imagen-ia {
+  background:
+    radial-gradient(circle at 80% 20%, #42d6b1 0, transparent 30%),
+    linear-gradient(135deg, #123c45, #159b82);
+}
+
+.enlace-proyecto {
+  transition: color .2s ease;
+}
+
+.enlace-proyecto:hover {
+  color: #034d86;
+  text-decoration: underline;
+}
+
+/* Accesibilidad */
+
+a:focus-visible {
+  outline: 3px solid var(--azul-claro);
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+/* Navegación adaptable */
+
+@media (max-width: 600px) {
+  .barra nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 12px;
+  }
+
+  .barra nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    gap: 25px;
+  }
+
+  .indicadores {
+    justify-content: space-between;
+  }
+
+  .proyecto-info,
+  .asistente {
+    padding: 23px;
+  }
+}
+
+/* Respeto por usuarios que reducen animaciones */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
