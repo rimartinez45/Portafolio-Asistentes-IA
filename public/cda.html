@@ -4,179 +4,414 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asistente CDA</title>
+  <meta name="description" content="Asistente inteligente especializado en Centros de Diagnóstico Automotor de Colombia.">
+  <meta name="theme-color" content="#10243d">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f1f5f9;
-      margin: 0;
-      color: #1e293b;
-    }
+  <title>Asistente CDA | RM Tecnología</title>
 
-    .contenedor {
-      max-width: 850px;
-      margin: 25px auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 5px 25px #0001;
-      overflow: hidden;
-    }
-
-    header {
-      background: #123b66;
-      color: white;
-      padding: 22px;
-    }
-
-    header h1 { margin: 0 0 8px; }
-    header p { margin: 0; color: #dbeafe; }
-
-    .volver {
-      display: inline-block;
-      margin-top: 15px;
-      color: white;
-      text-decoration: none;
-    }
-
-    #mensajes {
-      height: 420px;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .mensaje {
-      padding: 12px 15px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      line-height: 1.5;
-      white-space: pre-wrap;
-    }
-
-    .agente { background: #eaf2fb; }
-
-    .usuario {
-      background: #d9f7e8;
-      margin-left: 45px;
-    }
-
-    form {
-      display: flex;
-      gap: 10px;
-      padding: 15px;
-      border-top: 1px solid #e2e8f0;
-    }
-
-    input {
-      flex: 1;
-      min-width: 0;
-      padding: 13px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    button {
-      background: #1769aa;
-      color: white;
-      border: 0;
-      border-radius: 8px;
-      padding: 12px 18px;
-      cursor: pointer;
-    }
-
-    button:disabled { opacity: 0.6; }
-
-    @media (max-width: 600px) {
-      .contenedor { margin: 0; border-radius: 0; }
-      #mensajes { height: 65vh; }
-    }
-  </style>
+  <link rel="stylesheet" href="/cda.css">
 </head>
 
 <body>
-  <main class="contenedor">
 
-    <header>
-      <h1>Asistente CDA</h1>
-      <p>Tu asistente administrativo y técnico</p>
-      <a class="volver" href="/">← Volver al menú principal</a>
+<div class="app">
+
+  <!-- PANEL LATERAL -->
+
+  <aside class="sidebar">
+
+    <div class="marca">RM<span>.</span> AI</div>
+
+    <button class="nuevo" id="nuevoChat" type="button">
+      ＋ Nueva conversación
+    </button>
+
+    <div class="sidebar-titulo">ASISTENTE ACTUAL</div>
+
+    <div class="opcion">⚙️ Asistente CDA</div>
+
+    <div class="sidebar-titulo">ÁREAS DE APOYO</div>
+
+    <div class="opcion">📋 Gestión administrativa</div>
+    <div class="opcion">🔧 Procesos técnicos RTM</div>
+    <div class="opcion">📐 Metrología y calibración</div>
+    <div class="opcion">✓ Calidad y auditorías</div>
+
+    <div class="sidebar-footer">
+
+      <div class="perfil">
+
+        <div class="avatar">RM</div>
+
+        <div>
+          <strong>RM Tecnología</strong>
+          <small>Plataforma de inteligencia artificial</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- ÁREA PRINCIPAL -->
+
+  <main class="principal">
+
+    <!-- ENCABEZADO -->
+
+    <header class="topbar">
+
+      <div class="titulo">
+
+        <div class="icono-cda">⚙️</div>
+
+        <div>
+          <h1>Asistente CDA</h1>
+          <p>Especialista en Centros de Diagnóstico Automotor</p>
+        </div>
+
+      </div>
+
+      <div class="estado">
+        <span class="punto"></span>
+        Disponible
+      </div>
+
     </header>
 
-    <section id="mensajes" aria-live="polite">
-      <div class="mensaje agente">
-        ¡Hola! Soy tu Asistente CDA. Estoy aquí para ayudarte con temas técnicos, administrativos, normativos y operativos de los CDA.
+    <!-- CONVERSACIÓN -->
+
+    <section class="zona-chat" id="zonaChat">
+
+      <div class="contenido-chat" id="mensajes">
+
+        <!-- BIENVENIDA -->
+
+        <div class="bienvenida" id="bienvenida">
+
+          <div class="bienvenida-icono">⚙️</div>
+
+          <h2>¿En qué puedo ayudarte hoy?</h2>
+
+          <p>
+            Soy tu asistente especializado en Centros de Diagnóstico
+            Automotor. Puedo ayudarte con procesos técnicos,
+            administración, metrología y gestión operativa.
+          </p>
+
+        </div>
+
+        <!-- PREGUNTAS SUGERIDAS -->
+
+        <div id="sugerencias">
+
+          <div class="sugerencias-titulo">
+            PUEDES COMENZAR CON ALGUNA DE ESTAS PREGUNTAS
+          </div>
+
+          <div class="sugerencias">
+
+            <button
+              class="sugerencia"
+              type="button"
+              data-pregunta="¿Cómo puedo organizar un cronograma de mantenimiento preventivo para los equipos de un CDA?">
+
+              <strong>🔧 Mantenimiento</strong>
+
+              Organizar un cronograma de mantenimiento preventivo.
+
+            </button>
+
+            <button
+              class="sugerencia"
+              type="button"
+              data-pregunta="¿Qué aspectos debo revisar para preparar una auditoría de ONAC en un CDA?">
+
+              <strong>✓ Auditorías</strong>
+
+              Preparación para una auditoría de ONAC.
+
+            </button>
+
+            <button
+              class="sugerencia"
+              type="button"
+              data-pregunta="Explícame cómo llevar el control de calibraciones y verificaciones de los equipos de un CDA.">
+
+              <strong>📐 Metrología</strong>
+
+              Control de calibraciones y verificaciones.
+
+            </button>
+
+            <button
+              class="sugerencia"
+              type="button"
+              data-pregunta="Ayúdame a redactar un informe administrativo para los socios de un CDA.">
+
+              <strong>📋 Administración</strong>
+
+              Elaborar un informe para los socios del CDA.
+
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
 
-    <form id="formulario">
-      <input
-        id="entrada"
-        type="text"
-        placeholder="Escribe tu pregunta..."
-        autocomplete="off"
-        required
-      >
-      <button id="enviar" type="submit">Enviar</button>
-    </form>
+    <!-- ÁREA DE ESCRITURA -->
+
+    <section class="zona-escritura">
+
+      <a class="volver" href="/">
+        ← Volver al portafolio principal
+      </a>
+
+      <form class="caja-escritura" id="formulario">
+
+        <input
+          id="entrada"
+          type="text"
+          placeholder="Escribe tu consulta sobre CDA..."
+          autocomplete="off"
+          maxlength="5000"
+          required
+        >
+
+        <button id="enviar" type="submit">
+          Enviar ↑
+        </button>
+
+      </form>
+
+      <p class="aviso">
+        La inteligencia artificial puede cometer errores.
+        Verifica la información normativa y técnica.
+      </p>
+
+    </section>
 
   </main>
 
-  <script>
-    const formulario = document.getElementById("formulario");
-    const entrada = document.getElementById("entrada");
-    const mensajes = document.getElementById("mensajes");
-    const boton = document.getElementById("enviar");
-    const sessionId = crypto.randomUUID();
+</div>
 
-    function agregarMensaje(texto, tipo) {
-      const elemento = document.createElement("div");
-      elemento.className = "mensaje " + tipo;
-      elemento.textContent = texto;
-      mensajes.appendChild(elemento);
-      mensajes.scrollTop = mensajes.scrollHeight;
-      return elemento;
+<!-- LÓGICA DEL ASISTENTE -->
+
+<script>
+
+  const formulario = document.getElementById("formulario");
+  const entrada = document.getElementById("entrada");
+  const mensajes = document.getElementById("mensajes");
+  const zonaChat = document.getElementById("zonaChat");
+  const boton = document.getElementById("enviar");
+
+  const bienvenida = document.getElementById("bienvenida");
+  const sugerencias = document.getElementById("sugerencias");
+  const nuevoChat = document.getElementById("nuevoChat");
+
+  // Identificador único de esta conversación.
+
+  let sessionId = crypto.randomUUID();
+
+  // Desplazar la conversación hasta el último mensaje.
+
+  function bajarChat() {
+
+    zonaChat.scrollTop = zonaChat.scrollHeight;
+
+  }
+
+  // Crear mensajes en pantalla.
+
+  function agregarMensaje(texto, tipo, escribiendo = false) {
+
+    const contenedor = document.createElement("div");
+
+    contenedor.className = "mensaje " + tipo;
+
+    const avatar = document.createElement("div");
+
+    avatar.className = "mensaje-avatar";
+
+    avatar.textContent = tipo === "usuario" ? "👤" : "⚙️";
+
+    const contenido = document.createElement("div");
+
+    contenido.className = "mensaje-contenido";
+
+    const nombre = document.createElement("div");
+
+    nombre.className = "mensaje-nombre";
+
+    nombre.textContent =
+      tipo === "usuario" ? "Tú" : "Asistente CDA";
+
+    const burbuja = document.createElement("div");
+
+    burbuja.className = "burbuja";
+
+    burbuja.textContent = texto;
+
+    if (escribiendo) {
+
+      burbuja.classList.add("escribiendo");
+
     }
 
-    formulario.addEventListener("submit", async (evento) => {
-      evento.preventDefault();
+    contenido.appendChild(nombre);
+    contenido.appendChild(burbuja);
 
-      const mensaje = entrada.value.trim();
-      if (!mensaje) return;
+    contenedor.appendChild(avatar);
+    contenedor.appendChild(contenido);
 
-      agregarMensaje(mensaje, "usuario");
-      entrada.value = "";
-      boton.disabled = true;
+    mensajes.appendChild(contenedor);
 
-      const espera = agregarMensaje("Consultando al Asistente CDA...", "agente");
+    bajarChat();
 
-      try {
-        const respuesta = await fetch("/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            mensaje,
-            sessionId,
-            asistente: "cda"
-          })
-        });
+    return burbuja;
 
-        const datos = await respuesta.json();
+  }
 
-        if (!respuesta.ok) {
-          throw new Error(datos.error || "Error al consultar.");
-        }
+  // Enviar una pregunta al agente CDA.
 
-        espera.textContent = datos.respuesta;
+  async function enviarPregunta(texto) {
 
-      } catch (error) {
-        espera.textContent = "No se pudo obtener respuesta: " + error.message;
-      } finally {
-        boton.disabled = false;
-        entrada.focus();
-        mensajes.scrollTop = mensajes.scrollHeight;
+    const mensaje = texto.trim();
+
+    if (!mensaje || boton.disabled) return;
+
+    // Ocultar la bienvenida al comenzar.
+
+    bienvenida.style.display = "none";
+
+    sugerencias.style.display = "none";
+
+    // Mostrar el mensaje del usuario.
+
+    agregarMensaje(mensaje, "usuario");
+
+    entrada.value = "";
+
+    boton.disabled = true;
+
+    // Mostrar indicador de espera.
+
+    const espera = agregarMensaje(
+      "Analizando tu consulta. Un momento, por favor...",
+      "agente",
+      true
+    );
+
+    try {
+
+      const respuesta = await fetch("/chat", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+          mensaje: mensaje,
+
+          sessionId: sessionId,
+
+          asistente: "cda"
+
+        })
+
+      });
+
+      const datos = await respuesta.json();
+
+      if (!respuesta.ok) {
+
+        throw new Error(
+          datos.error || "Error al consultar el asistente."
+        );
+
       }
+
+      espera.classList.remove("escribiendo");
+
+      espera.textContent =
+        datos.respuesta || "No se recibió una respuesta.";
+
+    } catch (error) {
+
+      espera.classList.remove("escribiendo");
+
+      espera.textContent =
+        "No se pudo obtener respuesta: " + error.message;
+
+    } finally {
+
+      boton.disabled = false;
+
+      entrada.focus();
+
+      bajarChat();
+
+    }
+
+  }
+
+  // Enviar mediante el formulario.
+
+  formulario.addEventListener("submit", async (evento) => {
+
+    evento.preventDefault();
+
+    await enviarPregunta(entrada.value);
+
+  });
+
+  // Enviar preguntas sugeridas.
+
+  document.querySelectorAll(".sugerencia").forEach((botonSugerencia) => {
+
+    botonSugerencia.addEventListener("click", () => {
+
+      enviarPregunta(botonSugerencia.dataset.pregunta);
+
     });
-  </script>
+
+  });
+
+  // Iniciar una conversación nueva.
+
+  nuevoChat.addEventListener("click", () => {
+
+    if (boton.disabled) return;
+
+    mensajes.querySelectorAll(".mensaje").forEach((mensaje) => {
+
+      mensaje.remove();
+
+    });
+
+    bienvenida.style.display = "block";
+
+    sugerencias.style.display = "block";
+
+    sessionId = crypto.randomUUID();
+
+    entrada.value = "";
+
+    entrada.focus();
+
+    bajarChat();
+
+  });
+
+</script>
+
 </body>
 </html>
